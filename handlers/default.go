@@ -20,6 +20,8 @@ func DefaultHandler() http.Handler {
 			var b []byte
 
 			switch r.Method {
+			case http.MethodPut:
+				b = []byte("Put")
 			case http.MethodGet:
 				b = []byte("Friend")
 			case http.MethodPost:
@@ -29,6 +31,9 @@ func DefaultHandler() http.Handler {
 					http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 					return
 				}
+
+			case http.MethodDelete:
+				b = []byte("Delete")
 			default:
 				// rfc requires allow header
 				http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)

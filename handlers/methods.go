@@ -49,6 +49,7 @@ func DefaultMethodsHandler() http.Handler {
 	return Methods{
 		http.MethodGet: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			_, _ = w.Write([]byte("Hello Friend!"))
+			fmt.Fprintf(w, "%s", r.Method)
 		},
 		),
 		http.MethodPost: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -59,6 +60,14 @@ func DefaultMethodsHandler() http.Handler {
 			}
 
 			_, _ = fmt.Fprintf(w, "Hello, %s!", html.EscapeString(string(b)))
+		},
+		),
+		http.MethodPut: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintf(w, "%s", r.Method)
+		},
+		),
+		http.MethodDelete: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintf(w, "%s", r.Method)
 		},
 		),
 	}

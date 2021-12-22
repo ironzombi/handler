@@ -43,6 +43,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 		{http.MethodPost, bytes.NewBufferString("<world>"), http.StatusOK, "Hello, &lt;world&gt;!"},
 		{http.MethodHead, nil, http.StatusMethodNotAllowed, ""},
 		//trying to test some extra stuff here, doesnt really work
+		{http.MethodPut, nil, http.StatusOK, "OkPUT"},
 		{http.MethodOptions, nil, http.StatusOK, ""},
 	}
 	client := new(http.Client)
