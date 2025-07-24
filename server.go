@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+/* http handler */
 func main() {
 	var wg sync.WaitGroup
 	srv := &http.Server{
